@@ -17,6 +17,11 @@ public class UsuarioController {
     @Autowired
     UsuarioRepository uRepository;
 
+    @GetMapping("/loginUsuario")
+    public String login() {
+        return "loginUsuario";
+    }
+
     @GetMapping("/cadastroUsuario")
     public String cadastro() {
         return "/cadastroUsuario";
