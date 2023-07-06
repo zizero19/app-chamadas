@@ -7,5 +7,5 @@ import com.br.appchamadas.Model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-
+    Usuario findByLoginAndSenha(String login, String senha);
 }

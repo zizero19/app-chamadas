@@ -7,18 +7,22 @@
 </head>
 <body>
     
-    <form method="get" action="/loginUsuario">
+    <form method="post" action="/loginUsuario">
 
         <label>Usuario</label>
-        <input type="text" name="usuario">
+        <input type="text" name="login" required>
         <p></p>
 
         <label>Senha</label>
-        <input type="password" name="senha">
+        <input type="password" name="senha" required>
         <p></p>
 
         <button type="submit">Entrar</button>
 
     </form>
+
+    <div th:if="${param.error}">
+        <p style="color: red;">Credenciais inválidas. Por favor, tente novamente.</p>
+    </div>
 </body>
 </html>

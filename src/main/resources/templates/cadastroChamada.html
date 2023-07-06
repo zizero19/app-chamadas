@@ -9,15 +9,27 @@
 
     <form method="post" action="/cadastroChamada">
         <label>Data</label>
-        <input type="datetime-local" name="data">
+        <input type="date" name="data">
         <p></p>
 
         <label>Titulo</label>
         <input type="text" name="titulo">
         <p></p>
 
+        <label>Produto</label>
+        <select name="produto" id="produto">
+            <option th:each="produto : ${produtos}" th:value="${produto.id}" th:text="${produto.nomeProduto}"></option>
+        </select>
+        <p></p>
+
+        <label>Fila</label>
+        <select name="fila" id="fila">
+            <option th:each="fila : ${filas}" th:value="${fila.id}" th:text="${fila.descricao}"></option>
+        </select>
+        <p></p>
+
         <label>Usuario</label>
-        <input type="text" name="usuario">
+        <input type="text" name="user">
         <p></p>
 
         <label>Descrição</label>

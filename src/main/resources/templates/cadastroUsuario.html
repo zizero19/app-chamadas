@@ -8,20 +8,26 @@
 <body>
 
     <form method="post" action="/cadastroUsuario">
+
+        <div th:id="${usuarioAntigo}">
+            <input type="hidden" name="id" th:value="${usuarioAntigo?.id}">
+        </div>
+
+
         <label>Nome</label>
-        <input type="text" name="nome">
+        <input type="text" name="nome" th:value="${usuarioAntigo?.nome}">
         <p></p>
 
         <label>Usuario</label>
-        <input type="text" name="user">
+        <input type="text" name="login" th:value="${usuarioAntigo?.login}">
         <p></p>
 
         <label>Senha</label>
-        <input type="password" name="senha">
+        <input type="password" name="senha" th:value="${usuarioAntigo?.senha}">
         <p></p>
 
         <label>CPF</label>
-        <input type="text" name="cpf">
+        <input type="text" name="cpf" th:value="${usuarioAntigo?.cpf}">
         <p></p>
 
         <button type="submit">Cadastrar</button>

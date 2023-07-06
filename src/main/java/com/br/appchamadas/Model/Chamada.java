@@ -1,6 +1,6 @@
 package com.br.appchamadas.Model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ public class Chamada {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date data;
+    private LocalDate data;
     private String titulo;
     private String descricao;
 
@@ -33,7 +33,7 @@ public class Chamada {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    public Chamada(long id, Date data, String titulo, String descricao, Fila fila, Produto produto,
+    public Chamada(long id, LocalDate data, String titulo, String descricao, Fila fila, Produto produto,
             Usuario usuario) {
         this.id = id;
         this.data = data;
@@ -56,11 +56,11 @@ public class Chamada {
         this.id = id;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

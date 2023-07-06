@@ -20,7 +20,7 @@ public class Usuario {
     private Long id;
 
     private String nome;
-    private String usuario;
+    private String login;
     private String senha;
     private String cpf;
 
@@ -31,11 +31,11 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     List<Chamada> chamadas;
 
-    public Usuario(Long id, String nome, String usuario, String senha, String cpf, List<Tipo> tipos,
+    public Usuario(Long id, String nome, String login, String senha, String cpf, List<Tipo> tipos,
             List<Chamada> chamadas) {
         this.id = id;
         this.nome = nome;
-        this.usuario = usuario;
+        this.login = login;
         this.senha = senha;
         this.cpf = cpf;
         this.tipos = tipos;
@@ -62,12 +62,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getSenha() {
