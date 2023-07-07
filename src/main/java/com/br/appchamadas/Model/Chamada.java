@@ -20,6 +20,7 @@ public class Chamada {
     private LocalDate data;
     private String titulo;
     private String descricao;
+    private Boolean status;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fila_id")
@@ -34,7 +35,7 @@ public class Chamada {
     private Usuario usuario;
 
     public Chamada(long id, LocalDate data, String titulo, String descricao, Fila fila, Produto produto,
-            Usuario usuario) {
+            Usuario usuario, Boolean status) {
         this.id = id;
         this.data = data;
         this.titulo = titulo;
@@ -42,6 +43,7 @@ public class Chamada {
         this.fila = fila;
         this.produto = produto;
         this.usuario = usuario;
+        this.status = status;
     }
 
     public Chamada() {
@@ -102,6 +104,14 @@ public class Chamada {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
 }

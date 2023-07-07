@@ -31,11 +31,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/loginUsuario")
-    public String logar(Usuario usuario, Model model) {
+    public String logar(Usuario usuario) {
 
         Usuario usuarioAutenticacao = uRepository.findByLoginAndSenha(usuario.getLogin(), usuario.getSenha());
 
         if (usuarioAutenticacao != null) {
+            usuarioAutenticacao.setStatus(true);
+            uRepository.save(usuarioAutenticacao);
             return "/telaInicial";
         } else {
             return "erroLogin";
@@ -50,6 +52,7 @@ public class UsuarioController {
 
     @PostMapping("/cadastroUsuario")
     public String cadastroUsuario(Usuario usuario) {
+        usuario.setStatus(false);
         uRepository.save(usuario);
         return "redirect:/listaUsuario";
     }

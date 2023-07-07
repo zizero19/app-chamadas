@@ -23,6 +23,7 @@ public class Usuario {
     private String login;
     private String senha;
     private String cpf;
+    private Boolean status;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tipo_usuario", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "tipo_id"))
@@ -32,7 +33,7 @@ public class Usuario {
     List<Chamada> chamadas;
 
     public Usuario(Long id, String nome, String login, String senha, String cpf, List<Tipo> tipos,
-            List<Chamada> chamadas) {
+            List<Chamada> chamadas, Boolean status) {
         this.id = id;
         this.nome = nome;
         this.login = login;
@@ -40,6 +41,7 @@ public class Usuario {
         this.cpf = cpf;
         this.tipos = tipos;
         this.chamadas = chamadas;
+        this.status = status;
     }
 
     public Usuario() {
@@ -100,6 +102,14 @@ public class Usuario {
 
     public void setChamadas(List<Chamada> chamadas) {
         this.chamadas = chamadas;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
 }

@@ -48,9 +48,9 @@
             <tr data-th-each="chamados: ${chamados}" data>
                 <td data-th-text="${chamados.id}"></td>
                 <td data-th-text="${chamados.data}"></td>
-                <td data-th-text="${chamados.fila}"></td>
-                <td data-th-text="${chamados.produto}"></td>
-                <td data-th-text="${chamados.usuario}"></td>
+                <td data-th-text="${chamados.fila.descricao}"></td>
+                <td data-th-text="${chamados.produto.nomeProduto}"></td>
+                <!-- <td data-th-text="${chamados.usuario.nome}"></td> !-->
                 <td data-th-text="${chamados.descricao}"></td>
                 <td data-th-text="${chamados.titulo}"></td>   
             </tr>              
