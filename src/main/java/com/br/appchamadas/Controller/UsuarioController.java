@@ -14,8 +14,6 @@ import com.br.appchamadas.Model.Usuario;
 import com.br.appchamadas.Repository.ChamadaRepository;
 import com.br.appchamadas.Repository.UsuarioRepository;
 
-import ch.qos.logback.core.model.Model;
-
 @Controller
 public class UsuarioController {
 

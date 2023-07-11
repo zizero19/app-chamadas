@@ -19,6 +19,7 @@ public class Chamada {
     private Long id;
     private LocalDate data;
     private String titulo;
+    private String historico;
     private String descricao;
     private Boolean status;
 
@@ -35,7 +36,7 @@ public class Chamada {
     private Usuario usuario;
 
     public Chamada(long id, LocalDate data, String titulo, String descricao, Fila fila, Produto produto,
-            Usuario usuario, Boolean status) {
+            Usuario usuario, Boolean status, String historico) {
         this.id = id;
         this.data = data;
         this.titulo = titulo;
@@ -44,6 +45,7 @@ public class Chamada {
         this.produto = produto;
         this.usuario = usuario;
         this.status = status;
+        this.historico = historico;
     }
 
     public Chamada() {
@@ -112,6 +114,14 @@ public class Chamada {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public String getHistorico() {
+        return historico;
+    }
+
+    public void setHistorico(String historico) {
+        this.historico = historico;
     }
 
 }
