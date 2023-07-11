@@ -30,6 +30,14 @@
         <input type="text" name="cpf" th:value="${usuarioAntigo?.cpf}">
         <p></p>
 
+        <div th:each="tipo : ${tipos}">
+            <label>
+                <input type="radio" th:name="tipo" th:value="${tipo.id}"> <span th:text="${tipo.descricao}"></span>
+            </label>
+        </div>
+        
+
+
         <button type="submit">Cadastrar</button>
     </form>
 </body>

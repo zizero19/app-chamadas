@@ -1,17 +1,21 @@
 package com.br.appchamadas.Controller;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.br.appchamadas.Model.Chamada;
+import com.br.appchamadas.Model.Tipo;
 import com.br.appchamadas.Model.Usuario;
 import com.br.appchamadas.Repository.ChamadaRepository;
+import com.br.appchamadas.Repository.TipoRepository;
 import com.br.appchamadas.Repository.UsuarioRepository;
 
 @Controller
@@ -22,6 +26,9 @@ public class UsuarioController {
 
     @Autowired
     ChamadaRepository cRepository;
+
+    @Autowired
+    TipoRepository tRepository;
 
     @GetMapping("/loginUsuario")
     public String login() {
@@ -44,7 +51,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/cadastroUsuario")
-    public String cadastro() {
+    public String cadastro(Model model) {
+        List<Tipo> tipos = tRepository.findAll();
+        model.addAttribute("tipos", tipos);
+
         return "/cadastroUsuario";
     }
 

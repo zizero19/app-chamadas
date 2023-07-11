@@ -54,6 +54,7 @@ public class ChamadoController {
     @PostMapping("/cadastroChamada")
     public String cadastroChamado(Chamada chamada) {
         chamada.setStatus(false);
+        System.out.println("Usuario da chamada" + chamada.getUsuario());
         cRepository.save(chamada);
         return "redirect:/listaUsuario";
     }
