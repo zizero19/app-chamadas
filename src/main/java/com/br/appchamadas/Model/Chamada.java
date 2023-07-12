@@ -35,7 +35,7 @@ public class Chamada {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    public Chamada(long id, LocalDate data, String titulo, String descricao, Fila fila, Produto produto,
+    public Chamada(Long id, LocalDate data, String titulo, String descricao, Fila fila, Produto produto,
             Usuario usuario, Boolean status, String historico) {
         this.id = id;
         this.data = data;
@@ -52,11 +52,11 @@ public class Chamada {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

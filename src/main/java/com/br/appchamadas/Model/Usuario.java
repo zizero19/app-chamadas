@@ -88,7 +88,7 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public List<Tipo> getTipos() {
+    public List<Tipo> getTipos(Long i) {
         return tipos;
     }
 

@@ -1,14 +1,15 @@
 package com.br.appchamadas.Controller;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.br.appchamadas.Model.Chamada;
@@ -37,12 +38,12 @@ public class UsuarioController {
 
     @PostMapping("/loginUsuario")
     public String logar(Usuario usuario) {
-
         Usuario usuarioAutenticacao = uRepository.findByLoginAndSenha(usuario.getLogin(), usuario.getSenha());
 
         if (usuarioAutenticacao != null) {
             usuarioAutenticacao.setStatus(true);
             uRepository.save(usuarioAutenticacao);
+
             return "/telaInicial";
         } else {
             return "erroLogin";
@@ -59,8 +60,12 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastroUsuario")
-    public String cadastroUsuario(Usuario usuario) {
+    public String salvar(Usuario usuario, @RequestParam("tipo") List<Tipo> tipoId) {
+        System.out.println();
+
         usuario.setStatus(false);
+        usuario.setTipos(tipoId);
+
         uRepository.save(usuario);
         return "redirect:/listaUsuario";
     }

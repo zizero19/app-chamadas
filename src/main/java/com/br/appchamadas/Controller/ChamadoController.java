@@ -48,6 +48,7 @@ public class ChamadoController {
         model.addAttribute("produtos", produtos);
         model.addAttribute("filas", filas);
         model.addAttribute("usuario", usuarioLogado);
+        System.out.println("Dados do usuario logado:" + toString());
         return "/cadastroChamada";
     }
 

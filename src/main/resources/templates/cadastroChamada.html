@@ -40,9 +40,11 @@
         <input type="text" name="descricao">
         <p></p>
 
-        <label>Historico</label>
-        <input type="text" name="historico">
-        <p></p>
+        <div th:if="${usuario.tipos.contains('operador')}">
+            <label>Historico</label>
+            <input type="text" name="historico">
+            <p></p>
+        </div>
 
         <button type="submit">Enviar</button>
     </form>
