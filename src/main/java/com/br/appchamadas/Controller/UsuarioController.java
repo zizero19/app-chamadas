@@ -2,6 +2,7 @@ package com.br.appchamadas.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -89,12 +90,37 @@ public class UsuarioController {
     }
 
     @GetMapping("/cadastroUsuario/editar/{id}")
-    public ModelAndView editar(@PathVariable("id") Long id) {
+    public ModelAndView editar(@PathVariable("id") Long id, Model model) {
         ModelAndView mv = new ModelAndView("cadastroUsuario");
+        List<Tipo> tipos = tRepository.findAll();
+        model.addAttribute("tipos", tipos);
         Usuario usuarioAntigo = new Usuario();
         usuarioAntigo = uRepository.findById(id).get();
         mv.addObject("usuarioAntigo", usuarioAntigo);
         return mv;
+    }
+
+    @PostMapping("/logout")
+    public String deslogarUsuario() {
+        List<Usuario> usuarios = uRepository.findAll();
+        Long idUsuarioLogado = null;
+
+        for (Usuario u : usuarios) {
+            if (u.getStatus().equals(true)) {
+                idUsuarioLogado = u.getId();
+                break;
+            }
+        }
+
+        if (idUsuarioLogado != null) {
+            Usuario usuarioDeslogado = uRepository.findById(idUsuarioLogado).orElse(null);
+            if (usuarioDeslogado != null) {
+                usuarioDeslogado.setStatus(false);
+                uRepository.save(usuarioDeslogado);
+            }
+        }
+
+        return "redirect:/loginUsuario";
     }
 
 }
