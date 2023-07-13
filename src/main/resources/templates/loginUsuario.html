@@ -4,22 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Usuário</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Ysabeau+SC:wght@800&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #464545;
+        }
+        
+        form {
+            width: 415px;
+            padding: 20px;
+            border-radius: 4px;
+            background-color: #302f2f;
+            font-family: 'Ysabeau SC', sans-serif;
+            border-color: #7ae2ff;
+            border-style: solid;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color:#7ae2ff;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #7ae2ff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* Estilos específicos */
+        #login {
+            font-size: 18px;
+        }
+        
+        #senha {
+            font-size: 16px;
+        }
+        
+        .signup-link {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    
     <form method="post" action="/loginUsuario">
+        <p style="text-align: center; font-size: 60px; margin: 0;  color:#7ae2ff;">OneCall</p>
 
-        <label>Usuario</label>
-        <input type="text" name="login" required>
-        <p></p>
-
-        <label>Senha</label>
-        <input type="password" name="senha" required>
-        <p></p>
-
+        <label for="login">Usuário</label>
+        <input type="text" id="login" name="login" required>
+        
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
+        
         <button type="submit">Entrar</button>
-
+        <p class="signup-link">Não possui uma conta? <a href="/cadastroUsuario">Cadastre-se</a></p>
     </form>
-
 </body>
 </html>

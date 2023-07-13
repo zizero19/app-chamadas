@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\style.css">
     <title>Principal</title>
 </head>
+
 <body>
-    <input type="hidden" name="usuario" th:value="${usuario.id}">
-    <h1>Pagina Principal</h1>
 
-    <form action="/logout" method="post" th:action="@{/logout}">
-        <button type="submit">Logout</button>
-    </form>
-    
-    <a href="/cadastroUsuario">Cadastro de Usuario</a><p></p>
-    <a href="/loginUsuario">Login de Usuario</a><p></p>
-    <a href="/cadastroChamada">Cadastro de Chamada</a><p></p>
+    <div class="sidebar">
+        <ul>
 
-    <div th:if="${usuario.isUsuarioOperador} == false">
-        <a href="/cadastroProduto">Cadastro de Produto</a><p></p>
-        <a href="/cadastroFila">Cadastro de Fila</a><p></p>
-        <a href="/listaUsuario">Lista de Usuario</a><p></p>
+            <h1 style="color: white;">OneCall</h1>
+            <form action="/logout" method="post" th:action="@{/logout}">
+                <div class="usuario-logout">
+                    <p class="bem-vindo-usuario"><span class="bem-vindo-usuario" th:text="${usuario.login}"></span>|</p>
+                    <button type="submit" id="logout">
+                        <span id="logout-frase">Logout</span>
+                    </button>
+                </div>
+            </form>
+            <hr>
+            </hr>
+
+            <p class="bem-vindo">Bem-vindo!</p>
+            
+            <li class="item-menu">
+                <a href="/cadastroChamada">Cadastro de Chamada</a>
+            </li>
+
+            <li class="item-menu">
+                <a href="/listaChamadas">Lista de Chamadas</a>
+            </li>
+
+            <li class="item-menu" th:if="${usuario.isUsuarioSolicitante} != false">
+                <a href="/cadastroProduto">Cadastro de Produto</a>
+            </li>
+
+            <li class="item-menu" th:if="${usuario.isUsuarioSolicitante} != false">
+                <a href="/cadastroFila">Cadastro de Fila</a>
+            </li>
+            
+
+        </ul>
     </div>
 
+    <div class="content">
+
+    </div>
 </body>
+
 </html>

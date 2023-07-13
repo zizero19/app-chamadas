@@ -44,9 +44,9 @@ public class UsuarioController {
             usuarioAutenticacao.setStatus(true);
             uRepository.save(usuarioAutenticacao);
 
-            return "/telaInicial";
+            return "redirect:/telaInicial";
         } else {
-            return "erroLogin";
+            return "redirect:/telaLogin";
         }
 
     }
@@ -67,36 +67,7 @@ public class UsuarioController {
         usuario.setTipos(tipoId);
 
         uRepository.save(usuario);
-        return "redirect:/listaUsuario";
-    }
-
-    @GetMapping("/listaUsuario")
-    public ModelAndView lista(Usuario usuario) {
-        ModelAndView mv = new ModelAndView("listaUsuario");
-        ArrayList<Usuario> usuarios = new ArrayList<>();
-        ArrayList<Chamada> chamados = new ArrayList<>();
-        usuarios = (ArrayList<Usuario>) uRepository.findAll();
-        chamados = (ArrayList<Chamada>) cRepository.findAll();
-        mv.addObject("usuario", usuarios);
-        mv.addObject("chamados", chamados);
-        return mv;
-    }
-
-    @GetMapping("/excluir/{id}")
-    public String excluir(@PathVariable("id") Long id) {
-        uRepository.deleteById(id);
-        return "redirect:/listaUsuario";
-    }
-
-    @GetMapping("/cadastroUsuario/editar/{id}")
-    public ModelAndView editar(@PathVariable("id") Long id, Model model) {
-        ModelAndView mv = new ModelAndView("cadastroUsuario");
-        List<Tipo> tipos = tRepository.findAll();
-        model.addAttribute("tipos", tipos);
-        Usuario usuarioAntigo = new Usuario();
-        usuarioAntigo = uRepository.findById(id).get();
-        mv.addObject("usuarioAntigo", usuarioAntigo);
-        return mv;
+        return "redirect:/loginUsuario";
     }
 
     @PostMapping("/logout")

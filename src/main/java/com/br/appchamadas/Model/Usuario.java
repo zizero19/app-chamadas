@@ -112,8 +112,8 @@ public class Usuario {
         this.status = status;
     }
 
-    public boolean isUsuarioOperador() {
-        return getTipos().stream().anyMatch(Tipo::isTipoOperador);
+    public boolean isUsuarioSolicitante() {
+        return getTipos().stream().anyMatch(Tipo::isTipoSolicitante);
     }
 
 }

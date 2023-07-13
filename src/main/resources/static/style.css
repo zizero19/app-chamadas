@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #464545;
+    font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size:  55px;
+}
+
+hr {
+    height: 1px;
+    border: none;
+    background-color: #7ae2ff;
+     margin: 20px 0;
+}
+
+.sidebar {
+    min-width: 285px;
+    min-height: 100%;
+    padding: 0px;
+    margin: 0px;
+    position: fixed;
+    overflow: none;
+    float: left;
+    background: #242323;
+    font-family: 'Oswald', sans-serif;
+    font-style: red;
+    box-shadow: 3px 0 0 #7ae2ff;
+}
+
+
+.content {
+    flex: 1;
+    padding: 20px;
+    min-width: 1569px;
+    padding-left: 289px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#logout {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    color: red;
+    -webkit-text-stroke: thin;
+}
+
+.bem-vindo-usuario {
+    font-family: 'Oswald', sans-serif;
+    font-size: 19px;
+    margin-right: 10px;
+    color: white;
+}
+
+.bem-vindo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    margin-right: 10px;
+    text-align: center;
+    color: white;
+}
+
+img {
+    height: 30px;
+}
+
+#logout-frase {
+    font-family: 'Oswald', sans-serif;
+    font-size: 19px;
+}
+
+.usuario-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+}
+
+ul li.item-menu {
+    transition: .25s;
+}
+
+ul li.item-menu a{
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    padding-left: 30px;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 40p;
+}
+
+ul li.item-menu:hover {
+    background: #7ae2ff;
+}
+
+

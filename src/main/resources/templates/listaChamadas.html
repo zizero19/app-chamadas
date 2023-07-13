@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\style.css">
+    <title>Lista de Chamadas</title>
+    <style>
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #333;
+        }
+        
+        .table thead th {
+            background-color: #7ae2ff;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .table tbody td {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+        
+        .table tbody td:first-child {
+            width: 80px;
+        }
+
+        .table tbody tr {
+            background-color: #f1f1f1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <ul>
+
+            <h1 style="color: white;">OneCall</h1>
+            <form action="/logout" method="post" th:action="@{/logout}">
+                <div class="usuario-logout">
+                    <p class="bem-vindo-usuario"><span class="bem-vindo-usuario" th:text="${usuario.login}"></span>|</p>
+                    <button type="submit" id="logout">
+                        <span id="logout-frase">Logout</span>
+                    </button>
+                </div>
+            </form>
+            <hr>
+            </hr>
+
+            <p class="bem-vindo">Bem-vindo!</p>
+            
+            <li class="item-menu">
+                <a href="/cadastroChamada">Cadastro de Chamada</a>
+            </li>
+
+            <li class="item-menu">
+                <a href="/listaChamadas">Lista de Chamadas</a>
+            </li>
+
+            <li class="item-menu" th:if="${usuario.isUsuarioSolicitante} != false">
+                <a href="/cadastroProduto">Cadastro de Produto</a>
+            </li>
+
+            <li class="item-menu" th:if="${usuario.isUsuarioSolicitante} != false">
+                <a href="/cadastroFila">Cadastro de Fila</a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h1 style="color: #7ae2ff;">Lista de Chamadas</h1>
+            <hr>
+
+            <label>Filtro por Fila</label>
+            <form action="/listaChamadas" method="post" th:action="@{/listaChamadas}">
+                <select name="filasFiltro">
+                    <option th:each="filasFiltro : ${filasFiltro}" th:value="${filasFiltro.id}" th:text="${filasFiltro.descricao}"></option>
+                </select>
+                <button type="submit">Filtrar</button>
+            </form>
+            <p></p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Fila</th>
+                        <th scope="col">Status</th>
+                        <div th:if="${usuario.isUsuarioSolicitante} != false">
+                            <th scope="col">Pendencia</th>
+                        </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="chamadosFiltro: ${chamadosFiltro}" data>
+                        <td data-th-text="${chamadosFiltro.data}"></td>
+                        <td data-th-text="${chamadosFiltro.titulo}"></td>
+                        <td data-th-text="${chamadosFiltro.fila.descricao}"></td>
+                        <td data-th-text="${chamadosFiltro.status}"></td>
+                        <div th:if="${usuario.isUsuarioSolicitante} != false">
+                            <div th:if="${chamadosFiltro.status} == false">
+                                <td><a th:href="@{'/cadastroChamada/responder/'+${chamadosFiltro.id}}">Responder</a></td>
+                                <td th:if="${usuario.isUsuarioSolicitante} == false">Sem Permissão</td>
+                            </div>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>

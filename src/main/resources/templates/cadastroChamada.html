@@ -3,51 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\style.css">
     <title>Ordem de Serviço</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #464545;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            text-align: center;
+            font-size:  55px;
+        }
+
+        hr {
+            height: 1px;
+            border: none;
+            background-color: #7ae2ff;
+            margin: 20px 0;
+        }
+
+        .sidebar {
+            min-width: 285px;
+            min-height: 100%;
+            padding: 0px;
+            margin: 0px;
+            position: fixed;
+            overflow: none;
+            float: left;
+            background: #242323;
+            font-family: 'Oswald', sans-serif;
+            font-style: red;
+            box-shadow: 3px 0 0 #7ae2ff;
+        }
+
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            min-width: 1569px;
+            padding-left: 289px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #logout {
+            background-color: transparent;
+            border: none;
+            display: flex;
+            cursor: pointer;
+            color: red;
+            -webkit-text-stroke: thin;
+        }
+
+        .bem-vindo-usuario {
+            font-family: 'Oswald', sans-serif;
+            font-size: 19px;
+            margin-right: 10px;
+            color: white;
+        }
+
+        .bem-vindo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 30px;
+            margin-right: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        img {
+            height: 30px;
+        }
+
+        #logout-frase {
+            font-family: 'Oswald', sans-serif;
+            font-size: 19px;
+        }
+
+        .usuario-logout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+        }
+
+        ul li.item-menu {
+            transition: .25s;
+        }
+
+        ul li.item-menu a{
+            font-family: 'Oswald', sans-serif;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 20px 4%;
+            padding-left: 30px;
+            display: flex;
+            margin-bottom: 20px;
+            line-height: 40p;
+        }
+
+        ul li.item-menu:hover {
+            background: #7ae2ff;
+        }
+
+
+
+        .cadastro-chamada-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 4px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 1em;
+            background-color: #242323;
+            color: #7ae2ff;
+            font-family: 'Ysabeau SC', sans-serif;
+            border-style: solid;
+            border-color: #7ae2ff;
+        }
+
+        .input-group6 {
+            grid-column-start: 3;
+            grid-column-end: 1;
+            grid-row-start: 6;
+            grid-row-end: 3;
+        }
+
+        .input-group7 {
+            grid-column-start: 3;
+            grid-row-start: 6;
+            grid-row-end: 3;
+        }
+
+        .input-group8 {
+            grid-column-start: 1;
+            grid-row-start: 6;
+            grid-row-end: 7;
+        }
+
+        .cadastro-chamada-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .cadastro-chamada-form input, .cadastro-chamada-form select {
+            width: 255px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .cadastro-chamada-form button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #titulo-cadastro-chamada {
+            font-family: 'Pacifico', cursive;
+            font-family: 'Ysabeau SC', sans-serif;
+            font-size:  55px;
+            color: #7ae2ff;
+        }
+        
+    </style>
 </head>
 <body>
 
-    <span></span>
+    <div class="sidebar">
+        <ul>
 
-    <form method="post" action="/cadastroChamada">
+            <h1 style="color: white;">OneCall</h1>
+            <form action="/logout" method="post" th:action="@{/logout}">
+                <div class="usuario-logout">
+                    <p class="bem-vindo-usuario"><span class="bem-vindo-usuario" th:text="${usuario.login}"></span>|</p>
+                    <button type="submit" id="logout">
+                        <span id="logout-frase">Logout</span>
+                    </button>
+                </div>
+            </form>
+            <hr>
+            </hr>
 
-        <label>Usuario:</label>
-        <input type="text" name="user" th:value="${usuario.nome}" readonly>
-        <input type="hidden" name="usuario" th:value="${usuario.id}">
-        <p></p>
-        
-        <label>Data</label>
-        <input type="date" name="data">
-        <p></p>
+            <p class="bem-vindo">Bem-vindo!</p>
+            
+            <li class="item-menu">
+                <a href="/cadastroChamada">Cadastro de Chamada</a>
+            </li>
 
-        <label>Titulo</label>
-        <input type="text" name="titulo">
-        <p></p>
+            <li class="item-menu">
+                <a href="/listaChamadas">Lista de Chamadas</a>
+            </li>
 
-        <label>Produto</label>
-        <select name="produto" id="produto">
-            <option th:each="produto : ${produtos}" th:value="${produto.id}" th:text="${produto.nomeProduto}"></option>
-        </select>
-        <p></p>
+            <li class="item-menu" th:if="${usuario.isUsuarioSolicitante} != false">
+                <a href="/cadastroProduto">Cadastro de Produto</a>
+            </li>
 
-        <label>Fila</label>
-        <select name="fila" id="fila">
-            <option th:each="fila : ${filas}" th:value="${fila.id}" th:text="${fila.descricao}"></option>
-        </select>
-        <p></p>
+            <li class="item-menu" th:if="${usuario.isUsuarioSolicitante} != false">
+                <a href="/cadastroFila">Cadastro de Fila</a>
+            </li>
+            
 
-        <label>Descrição</label>
-        <input type="text" name="descricao">
-        <p></p>
+        </ul>
+    </div>
 
-        <div th:if="${usuario.isUsuarioOperador} == false">
-            <label>Historico</label>
-            <input type="text" name="historico">
+    
+
+    <div class="content">
+        <h1 id="titulo-cadastro-chamada">Cadastro de Chamada</h1>
+        <hr>
+
+        <form class="cadastro-chamada-form" method="post" action="/cadastroChamada">
+
+            <div class="input-group">
+                <div th:switch="${usuario.isUsuarioSolicitante()}">
+                    <label>Usuario:</label>
+                    <input th:case="false" type="text" name="user" th:value="${usuario.nome}" readonly>
+                    <input th:case="false" type="hidden" name="usuario" th:value="${usuario.id}">
+                    <!--<input th:case="true" type="text" name="nome" readonly th:value="${chamadoAntigo?.usuario_id.nome}"> 
+                    <input th:case="true" type="hidden" name="usuario" th:value="${chamadoAntigo?.usuario_id}">!-->
+                    <input th:case="true" type="hidden" name="id" th:value="${chamadoAntigo?.id}">
+                </div>   
+            </div>
+            
+            <div class="input-group">
+                <label>Data</label>
+                <input type="date" name="data" th:value="${chamadoAntigo?.data}">
+                <p></p>
+            </div>
+
+            <div class="input-group">
+                <label>Titulo</label>
+                <input type="text" name="titulo" th:value="${chamadoAntigo?.titulo}">
+                <p></p>
+            </div>
+
+            <div class="input-group">
+                <label>Produto</label>
+                <select name="produto" id="produto">
+                    <option th:each="produto : ${produtos}" th:value="${produto.id}" th:text="${produto.nomeProduto}"></option>
+                </select>
+                <p></p>
+            </div>
+
+            <div class="input-group">
+                <label>Fila</label>
+                <select name="fila" id="fila">
+                    <option th:each="fila : ${filas}" th:value="${fila.id}" th:text="${fila.descricao}"></option>
+                </select>
+                <p></p>
+            </div>
+
+            
             <p></p>
-        </div>
 
-        <button type="submit">Enviar</button>
-    </form>
+            <div class="input-group6">
+                <label>Descrição</label>
+                <input style="width: 514px; height: 147px;" type="text" name="descricao" th:value="${chamadoAntigo?.descricao}"></input>
+                <p></p>
+            </div>
+
+            <div class="input-group7" th:if="${usuario.isUsuarioSolicitante} != false">
+                <label>Historico</label>
+                <textarea type="text" name="historico" style="width: 248px; height: 150px;"></textarea>
+                <p></p>
+            </div>
+
+            <p></p>
+            <p></p>
+
+            <div class="input-group8">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
     
 </body>
 </html>
