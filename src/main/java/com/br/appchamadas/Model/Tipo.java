@@ -54,4 +54,7 @@ public class Tipo {
         this.usuarios = usuarios;
     }
 
+    public boolean isTipoOperador() {
+        return "Operador".equalsIgnoreCase(this.descricao);
+    }
 }

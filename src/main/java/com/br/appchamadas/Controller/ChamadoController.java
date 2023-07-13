@@ -45,10 +45,11 @@ public class ChamadoController {
                 usuarioLogado = u;
             }
         }
+
+        System.out.println("Tipo do usuario: " + usuarioLogado.isUsuarioOperador());
         model.addAttribute("produtos", produtos);
         model.addAttribute("filas", filas);
         model.addAttribute("usuario", usuarioLogado);
-        System.out.println("Dados do usuario logado:" + toString());
         return "/cadastroChamada";
     }
 
@@ -56,7 +57,15 @@ public class ChamadoController {
     public String cadastroChamado(Chamada chamada) {
         chamada.setStatus(false);
         System.out.println("Usuario da chamada" + chamada.getUsuario());
-        cRepository.save(chamada);
+
+        if (chamada.getHistorico() != null) {
+            chamada.setStatus(true);
+            cRepository.save(chamada);
+        } else {
+            chamada.setStatus(false);
+            cRepository.save(chamada);
+        }
+
         return "redirect:/listaUsuario";
     }
 }

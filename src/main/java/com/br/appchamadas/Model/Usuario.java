@@ -88,7 +88,7 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public List<Tipo> getTipos(Long i) {
+    public List<Tipo> getTipos() {
         return tipos;
     }
 
@@ -110,6 +110,10 @@ public class Usuario {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public boolean isUsuarioOperador() {
+        return getTipos().stream().anyMatch(Tipo::isTipoOperador);
     }
 
 }

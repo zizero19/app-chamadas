@@ -20,14 +20,14 @@ public class Fila {
     @OneToMany(mappedBy = "fila", fetch = FetchType.EAGER)
     private List<Chamada> chamadas;
 
+    private Fila() {
+
+    }
+
     public Fila(Long id, String descricao, List<Chamada> chamadas) {
         this.id = id;
         this.descricao = descricao;
         this.chamadas = chamadas;
-    }
-
-    private Fila() {
-
     }
 
     public Long getId() {

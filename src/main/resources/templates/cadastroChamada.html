@@ -15,7 +15,7 @@
         <input type="text" name="user" th:value="${usuario.nome}" readonly>
         <input type="hidden" name="usuario" th:value="${usuario.id}">
         <p></p>
-
+        
         <label>Data</label>
         <input type="date" name="data">
         <p></p>
@@ -40,7 +40,7 @@
         <input type="text" name="descricao">
         <p></p>
 
-        <div th:if="${usuario.tipos.contains('operador')}">
+        <div th:if="${usuario.isUsuarioOperador} == false">
             <label>Historico</label>
             <input type="text" name="historico">
             <p></p>

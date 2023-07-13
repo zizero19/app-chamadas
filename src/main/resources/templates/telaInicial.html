@@ -6,21 +6,22 @@
     <title>Principal</title>
 </head>
 <body>
+    <input type="hidden" name="usuario" th:value="${usuario.id}">
     <h1>Pagina Principal</h1>
 
     <form action="/logout" method="post" th:action="@{/logout}">
         <button type="submit">Logout</button>
     </form>
-
-   <!-- <div data-th-each="usuarios:">
-        <p>Bem Vindo <spam></spam></p>
-    </div>-->
     
     <a href="/cadastroUsuario">Cadastro de Usuario</a><p></p>
-    <a href="/listaUsuario">Lista de Usuario</a><p></p>
-    <a href="/cadastroFila">Cadastro de Fila</a><p></p>
     <a href="/loginUsuario">Login de Usuario</a><p></p>
-    <a href="/cadastroProduto">Cadastro de Produto</a><p></p>
     <a href="/cadastroChamada">Cadastro de Chamada</a><p></p>
+
+    <div th:if="${usuario.isUsuarioOperador} == false">
+        <a href="/cadastroProduto">Cadastro de Produto</a><p></p>
+        <a href="/cadastroFila">Cadastro de Fila</a><p></p>
+        <a href="/listaUsuario">Lista de Usuario</a><p></p>
+    </div>
+
 </body>
 </html>
